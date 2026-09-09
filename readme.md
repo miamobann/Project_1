@@ -6,7 +6,6 @@ country_codes_sample.csv 사용
 streamlit, seaborn 사용
 
 
-한글지원 인코딩
 폰트: NanumGothic.otf
 화면 왼쪽: 사이드바
 
