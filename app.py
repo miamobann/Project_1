@@ -56,6 +56,9 @@ if not FONT_PATH.exists():
 
 # Matplotlib 차트와 Streamlit 표 모두에 같은 한글 폰트를 적용한다.
 font_prop = fm.FontProperties(fname=FONT_PATH)
+# ``FontProperties``만 만들면 Matplotlib의 전역 글꼴 목록에는 등록되지 않아
+# seaborn의 축 눈금·파이 차트 레이블에서 기본 글꼴로 대체될 수 있다.
+fm.fontManager.addfont(str(FONT_PATH))
 plt.rc("font", family=font_prop.get_name())
 plt.rcParams["axes.unicode_minus"] = False
 st.markdown(get_font_css(str(FONT_PATH)), unsafe_allow_html=True)
@@ -121,7 +124,9 @@ st.dataframe(
 section_heading(2, "핵심 지표")
 col1, col2 = st.columns(2)
 col1.metric("총 거래 건수", f"{len(filtered_df):,}건")
-col2.metric("총 수출액", f"${filtered_df['수출액'].sum():,.2f}")
+# BACI의 v(수출액)는 천 달러 단위이므로 실제 달러 금액으로 환산해 표시한다.
+total_export_usd = filtered_df["수출액"].sum() * 1_000
+col2.metric("총 수출액", f"${total_export_usd:,.0f}")
 
 section_heading(3, "데이터 시각화")
 if filtered_df.empty:
@@ -138,6 +143,7 @@ else:
         sns.heatmap(heatmap_df, annot=True, fmt=".1f", cmap="YlGnBu", linewidths=0.5, ax=ax)
         ax.set_xlabel("연도")
         ax.set_ylabel("수입국")
+        ax.set_title("수출액 (천 달러)")
         fig.tight_layout()
         st.pyplot(fig, use_container_width=True)
         plt.close(fig)
