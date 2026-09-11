@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버번 위스키 테이스팅 빌드업 바이블</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #0b0c10;
+            --bg-card: rgba(22, 24, 29, 0.7);
+            --bg-card-hover: rgba(28, 31, 38, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-card-hover: rgba(245, 158, 11, 0.4);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-amber: #f59e0b;
+            --glass-blur: 16px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-body: #f8fafc;
+                --bg-card: rgba(255, 255, 255, 0.85);
+                --bg-card-hover: rgba(255, 255, 255, 0.98);
+                --border-card: rgba(0, 0, 0, 0.08);
+                --border-card-hover: rgba(217, 119, 6, 0.5);
+                --text-primary: #0f172a;
+                --text-secondary: #475569;
+                --text-muted: #94a3b8;
+                --accent-amber: #d97706;
+            }
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .font-serif-title {
+            font-family: 'Cinzel', serif;
+        }
+
+        .glass-panel {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--border-card);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: var(--border-card-hover);
+        }
+
+        .glass-card-interactive:hover {
+            background-color: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.5);
+        }
+
+        @media print {
+            nav, .no-print, header button, aside {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            .page-section {
+                display: block !important;
+                page-break-after: always;
+            }
+            .glass-panel {
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+                color: #000000 !important;
+                backdrop-filter: none !important;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Global Header -->
+    <header class="relative border-b border-slate-800/60 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-transparent pt-12 pb-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-amber-400 bg-amber-400/10 border border-amber-400/20">
+                    <i class="fa-solid fa-compass text-[11px]"></i> CURATED ROADMAP
+                </div>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-serif-title">
+                    BOURBON BIBLE
+                </h1>
+                <p class="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed font-normal">
+                    스탠다드 밀 버번부터 하이 라이, 캐스크 스트렝스, 핸즈필 및 전설적인 빈티지까지 미각의 스펙트럼을 체계적으로 확장하는 11단계 시음 큐레이션 가이드.
+                </p>
+            </div>
+
+            <!-- Stats Meta Badge -->
+            <div class="flex items-center gap-6 glass-panel px-5 py-3 rounded-xl">
+                <div>
+                    <span class="block text-[11px] font-medium uppercase tracking-wider text-slate-400">Total Steps</span>
+                    <span class="text-lg font-bold font-serif-title text-amber-400">11 Stage</span>
+                </div>
+                <div class="h-7 w-px bg-slate-700/50"></div>
+                <div>
+                    <span class="block text-[11px] font-medium uppercase tracking-wider text-slate-400">Selection</span>
+                    <span class="text-lg font-bold font-serif-title text-slate-200">33 Bottles</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub Navigation Sticky Bar -->
+    <nav class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 shadow-sm no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Dynamic Page Pill Selector -->
+            <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto custom-scrollbar pb-1 md:pb-0" id="page-nav-list"></div>
+
+            <!-- Pagination Action Buttons -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end text-xs">
+                <button onclick="prevPage()" class="px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-medium transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left text-[10px]"></i> 이전
+                </button>
+                <span id="current-page-indicator" class="font-mono text-xs font-bold text-amber-400">PAGE 01 / 11</span>
+                <button onclick="nextPage()" class="px-3.5 py-1.5 rounded-lg border border-amber-600/50 bg-amber-600/90 hover:bg-amber-600 text-white font-medium transition flex items-center gap-1.5">
+                    다음 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Workspace -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+
+            <!-- Primary Bottle List Container (3 Cols) -->
+            <div class="lg:col-span-3 space-y-6" id="page-display-container"></div>
+
+            <!-- Dashboard Sidebar (1 Col) -->
+            <aside class="space-y-6">
+
+                <!-- Tasting Tracker Card -->
+                <div class="glass-panel p-5 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="font-semibold text-sm text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-amber-400"></i> 시음 달성률
+                        </h2>
+                        <span id="tasting-stat" class="text-xs font-mono font-bold text-amber-400">0 / 33 (0%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800/80 h-2 rounded-full overflow-hidden mb-2">
+                        <div id="progress-fill" class="bg-gradient-to-r from-amber-500 to-amber-400 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-normal">
+                        각 보틀 카드의 시음 체크를 선택하면 브라우저에 저장되어 진행률이 갱신됩니다.
+                    </p>
+                </div>
+
+                <!-- Mashbill Overview Widget -->
+                <div class="glass-panel p-5 rounded-2xl text-xs space-y-3">
+                    <h2 class="font-semibold text-sm text-slate-200 flex items-center gap-2">
+                        <i class="fa-solid fa-wheat-awn text-amber-400"></i> 매시빌(Mashbill) 분류
+                    </h2>
+                    <div class="space-y-2 text-slate-300">
+                        <div class="p-2.5 rounded-lg bg-slate-900/50 border border-slate-800">
+                            <span class="font-medium text-amber-300 block mb-0.5">Traditional</span>
+                            옥수수 70% 이상 + 호밀 10~15%. 표준적 밸런스와 바닐라 풍미.
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-slate-900/50 border border-slate-800">
+                            <span class="font-medium text-amber-300 block mb-0.5">Wheated</span>
+                            호밀 대신 밀 사용. 알싸한 자극이 적고 부드러운 질감 형성.
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-slate-900/50 border border-slate-800">
+                            <span class="font-medium text-amber-300 block mb-0.5">High-Rye</span>
+                            호밀 20~35% 배합. 정향, 민트, 후추 계열의 향신료 스파이스 강조.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Print Utility -->
+                <button onclick="printAllPages()" class="w-full py-3 px-4 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-medium transition flex items-center justify-center gap-2 text-xs no-print">
+                    <i class="fa-solid fa-print"></i> 전체 페이지 인쇄 / PDF 저장
+                </button>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800/60 bg-slate-950 py-8 mt-auto text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-1">
+            <p class="font-serif-title font-semibold text-slate-400">THE BOURBON ROADMAP ARCHIVE</p>
+            <p>평점 데이터 출처: Whiskybase 누적 데이터 기준</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Registry
+        const bourbonRoadmap = [
+            {
+                page: 1,
+                level: "LEVEL 01",
+                pageTitle: "스탠다드 & 소프트 엔트리 (Standard & Wheated)",
+                pageDesc: "버번의 핵심 문법인 옥수수 단맛과 바닐라, 부드러운 밀(Wheat) 버번의 텍스처를 확인하는 단계입니다.",
+                bottles: [
+                    {
+                        id: "b1",
+                        name: "버팔로 트레이스 (Buffalo Trace)",
+                        wbScore: "82.5",
+                        proof: "90 Proof (45% ABV)",
+                        mashbill: "전통 버번 (Mashbill #1, Low-Rye)",
+                        price: "4.5 ~ 5.5 만원",
+                        difficulty: "쉬움",
+                        typeBadge: "Standard",
+                        nose: "바닐라, 민트, 당밀, 연한 가죽향",
+                        palate: "부드러운 캐러멜, 풋사과, 가벼운 향신료",
+                        finish: "깔끔하고 정갈한 건과일 피니시",
+                        recommendation: "모든 버번의 기본 벤치마크 보틀입니다. 오크와 바닐라의 직관적인 균형을 익히기에 적합합니다."
+                    },
+                    {
+                        id: "b2",
+                        name: "메이커스 마크 (Maker's Mark)",
+                        wbScore: "81.8",
+                        proof: "90 Proof (45% ABV)",
+                        mashbill: "위티드 버번 (겨울 밀 16%)",
+                        price: "4.0 ~ 5.0 만원",
+                        difficulty: "매우 쉬움",
+                        typeBadge: "Wheated",
+                        nose: "달콤한 꿀, 토스트 오크, 헤이즐넛 아로마",
+                        palate: "호밀의 매운맛이 배제된 매끄러운 텍스처, 바닐라 커스터드",
+                        finish: "자극 없이 감싸는 크리미한 여운",
+                        recommendation: "호밀 특유의 스파이시함이 부담스러운 경우 권장하는 정통 밀 버번입니다."
+                    },
+                    {
+                        id: "b3",
+                        name: "와일드 터키 101 8년 (Wild Turkey 101 8yo)",
+                        wbScore: "83.2",
+                        proof: "101 Proof (50.5% ABV)",
+                        mashbill: "전통 버번 (Heavy Char #4)",
+                        price: "5.5 ~ 6.5 만원",
+                        difficulty: "매우 쉬움",
+                        typeBadge: "101 Proof",
+                        nose: "강한 오크 훈연향, 정향, 시나몬 스틱",
+                        palate: "50.5도의 두터운 볼륨감, 흑설탕에 졸인 바나나와 후추",
+                        finish: "길고 굵직하게 남는 오크 탄닌",
+                        recommendation: "버번다운 강력한 타격감과 탄닌 구조를 학습하는 데 가장 적합한 고도수 표준입니다."
+                    }
+                ]
+            },
+            {
+                page: 2,
+                level: "LEVEL 02",
+                pageTitle: "호밀(Rye)의 구조와 하이 라이 (High-Rye)",
+                pageDesc: "호밀 비율을 높여 민트, 시나몬, 정향 등 향신료 복합미를 경험하는 단계입니다.",
+                bottles: [
+                    {
+                        id: "b4",
+                        name: "불릿 버번 (Bulleit Bourbon)",
+                        wbScore: "82.1",
+                        proof: "90 Proof (45% ABV)",
+                        mashbill: "하이 라이 (호밀 28%)",
+                        price: "5.0 ~ 6.0 만원",
+                        difficulty: "쉬움",
+                        typeBadge: "High-Rye",
+                        nose: "허브, 피클 스파이스, 오렌지 제스트",
+                        palate: "후추 스파이스, 말린 체리, 마른 목재 뉘앙스",
+                        finish: "드라이하고 선명한 롱 피니시",
+                        recommendation: "클래식 칵테일 베이스로도 널리 활용되는 하이 라이 버번의 대표적 특성을 지닙니다."
+                    },
+                    {
+                        id: "b5",
+                        name: "포로지스 싱글 배럴 (Four Roses Single Barrel)",
+                        wbScore: "85.4",
+                        proof: "100 Proof (50% ABV)",
+                        mashbill: "하이 라이 (OBSV - 호밀 35%)",
+                        price: "8.5 ~ 10.5 만원",
+                        difficulty: "보통",
+                        typeBadge: "Single Barrel",
+                        nose: "서양배, 잘 익은 자두, 플로럴 아로마",
+                        palate: "체리의 산미, 호밀 향신료, 메이플 시럽",
+                        finish: "과일 향과 민트 허브의 조화로운 여운",
+                        recommendation: "단일 배럴 고유의 집중도 높은 과실미와 호밀의 정갈함을 정밀하게 표현합니다."
+                    },
+                    {
+                        id: "b6",
+                        name: "우드포드 리저브 (Woodford Reserve)",
+                        wbScore: "83.1",
+                        proof: "90.4 Proof (45.2% ABV)",
+                        mashbill: "전통 배합 (포트 스틸 3회 증류분 블렌딩)",
+                        price: "7.5 ~ 9.0 만원",
+                        difficulty: "쉬움",
+                        typeBadge: "Pot Still Blend",
+                        nose: "건포도, 다크 초콜릿, 살구",
+                        palate: "에스프레소, 구운 아몬드, 호두",
+                        finish: "매끄럽고 온화하게 머무는 오크 잔향",
+                        recommendation: "팟 스틸 증류 원액을 사용하여 유질감이 우수하며 섬세한 풍미를 제공합니다."
+                    }
+                ]
+            },
+            {
+                page: 3,
+                level: "LEVEL 03",
+                pageTitle: "단일 배럴과 본디드 규격 (BiB & Single Barrel)",
+                pageDesc: "연방법 규격을 통과한 100프루프(50도) BiB 보틀과 단일 오크통의 개성을 확인합니다.",
+                bottles: [
+                    {
+                        id: "b7",
+                        name: "에반 윌리엄스 BiB (Evan Williams Bonded)",
+                        wbScore: "82.8",
+                        proof: "100 Proof (50% ABV)",
+                        mashbill: "전통 버번 (옥수수 78%, 호밀 12%)",
+                        price: "3.5 ~ 4.5 만원",
+                        difficulty: "매우 쉬움",
+                        typeBadge: "BiB",
+                        nose: "짙은 옥수수 단향, 캐러멜, 바닐라 웨이퍼",
+                        palate: "50도의 단단한 질감, 구운 마시멜로, 감초",
+                        finish: "따뜻하게 지속되는 캐러멜과 오크 힌트",
+                        recommendation: "BiB 규격의 높은 밀도감을 합리적인 가격대에서 체험할 수 있는 표준 보틀입니다."
+                    },
+                    {
+                        id: "b8",
+                        name: "잭 다니엘스 싱글 배럴 셀렉트 (Single Barrel Select)",
+                        wbScore: "84.5",
+                        proof: "94 Proof (47% ABV)",
+                        mashbill: "테네시 위스키 (단풍나무 숯 여과)",
+                        price: "10.0 ~ 12.5 만원",
+                        difficulty: "보통",
+                        typeBadge: "Single Barrel",
+                        nose: "캐러멜라이징된 바나나, 바닐라 에센스",
+                        palate: "단풍나무 시럽, 호두 타르트, 묵직한 오크 쓴맛",
+                        finish: "숯 여과 특유의 훈연감과 고소함",
+                        recommendation: "최상층 배럴 선별을 통해 일반 라인업 대비 뛰어난 복합미와 바나나 풍미를 전달합니다."
+                    },
+                    {
+                        id: "b9",
+                        name: "헨리 맥케나 10년 SiB BiB (Henry McKenna 10yo)",
+                        wbScore: "86.8",
+                        proof: "100 Proof (50% ABV)",
+                        mashbill: "헤븐힐 전통 배합 (10년 단일 배럴 숙성)",
+                        price: "14.0 ~ 17.0 만원",
+                        difficulty: "어려움",
+                        typeBadge: "10yo SiB BiB",
+                        nose: "마호가니 오크, 허브 뉘앙스, 짙은 꿀",
+                        palate: "오크 탄닌의 깊이감, 다크 체리, 가죽, 정향",
+                        finish: "입안을 정돈해 주는 웰-에이징 오크의 피니시",
+                        recommendation: "10년 숙성 단일 배럴과 BiB 규격이 결합되어 뛰어난 완성도를 인정받은 보틀입니다."
+                    }
+                ]
+            },
+            {
+                page: 4,
+                level: "LEVEL 04",
+                pageTitle: "배럴 프루프(Cask Strength)의 폭발력",
+                pageDesc: "가수를 거치지 않은 원액 그대로의 무여과 배럴 프루프(57~65도) 영역을 경험합니다.",
+                bottles: [
+                    {
+                        id: "b10",
+                        name: "노아스 밀 (Noah's Mill)",
+                        wbScore: "86.2",
+                        proof: "114.3 Proof (57.15% ABV)",
+                        mashbill: "윌렛 전통 하이 라이 블렌드",
+                        price: "12.5 ~ 14.5 만원",
+                        difficulty: "보통",
+                        typeBadge: "High Proof",
+                        nose: "호두 오일, 말린 자두, 민트, 계피 가루",
+                        palate: "높은 점도, 농익은 과실 단맛, 후추 스파이스",
+                        finish: "다크 초콜릿과 오크 진액의 긴 발열감",
+                        recommendation: "57도 특유의 묵직한 질감과 견과류 계열의 고소한 향미가 지배적입니다."
+                    },
+                    {
+                        id: "b11",
+                        name: "부커스 (Booker's Bourbon)",
+                        wbScore: "88.1",
+                        proof: "~126+ Proof (62~64% ABV)",
+                        mashbill: "짐빔 패밀리 무여과 배럴 프루프",
+                        price: "19.0 ~ 25.0 만원",
+                        difficulty: "어려움",
+                        typeBadge: "Uncut / Unfiltered",
+                        nose: "바닐라 팟, 캐러멜 탄내, 가죽, 카카오닙스",
+                        palate: "도수의 파워 뒤로 이어지는 캐러멜 퐁듀, 볶은 땅콩",
+                        finish: "입안 전체를 채우는 묵직한 오크 탄닌 여운",
+                        recommendation: "여과와 희석 없이 병입되는 원초적 배럴 프루프의 상징적인 제품입니다."
+                    },
+                    {
+                        id: "b12",
+                        name: "일라이저 크레이그 배럴 프루프 (ECBP)",
+                        wbScore: "88.6",
+                        proof: "~120-136 Proof (60~68% ABV)",
+                        mashbill: "12년 숙성 배럴 프루프 (헤븐힐)",
+                        price: "16.0 ~ 21.0 만원",
+                        difficulty: "보통~어려움",
+                        typeBadge: "12yo CS",
+                        nose: "깊은 숙성 오크, 체리 콤포트, 감초",
+                        palate: "두터운 바디, 다크 브라우니, 설탕 절임 오렌지",
+                        finish: "12년 고숙성에서 유래하는 긴 오크 피니시",
+                        recommendation: "배치별로 도수가 상이하며, 고숙성 배럴 프루프의 신뢰도 높은 교과서입니다."
+                    }
+                ]
+            },
+            {
+                page: 5,
+                level: "LEVEL 05",
+                pageTitle: "와일드 터키 하이엔드 라인업",
+                pageDesc: "엘리게이터 차(#4) 배럴에서 발현되는 짙은 체리와 오크의 조화를 탐색합니다.",
+                bottles: [
+                    {
+                        id: "b13",
+                        name: "와일드 터키 레어 브리드 (Rare Breed)",
+                        wbScore: "86.5",
+                        proof: "116.8 Proof (58.4% ABV)",
+                        mashbill: "6, 8, 12년 배럴 프루프 배합",
+                        price: "8.0 ~ 9.5 만원",
+                        difficulty: "쉬움",
+                        typeBadge: "Barrel Proof",
+                        nose: "오렌지 제스트, 아몬드, 바닐라",
+                        palate: "오일리한 텍스처, 매콤한 스파이스와 토피 단맛",
+                        finish: "도수 대비 깔끔하게 정돈된 오크 잔향",
+                        recommendation: "가장 균형 잡힌 가성비를 자랑하는 상설 배럴 프루프 대표작입니다."
+                    },
+                    {
+                        id: "b14",
+                        name: "러셀스 리저브 싱글 배럴 (Russell's SiB)",
+                        wbScore: "86.9",
+                        proof: "110 Proof (55% ABV)",
+                        mashbill: "러셀 부자 엄선 단일 배럴 (비냉각여과)",
+                        price: "10.0 ~ 12.5 만원",
+                        difficulty: "보통",
+                        typeBadge: "Non-Chill SiB",
+                        nose: "농밀한 체리, 바닐라 크림, 구운 마시멜로",
+                        palate: "도터운 체리 시럽, 코코아, 정갈한 스파이스",
+                        finish: "붉은 과실의 산미와 가죽 뉘앙스 잔류",
+                        recommendation: "단일 오크통의 개성과 선명한 체리 노트의 밸런스가 두드러집니다."
+                    },
+                    {
+                        id: "b15",
+                        name: "러셀스 리저브 13년 (Russell's 13yo)",
+                        wbScore: "89.7",
+                        proof: "114.8 Proof (57.4% ABV)",
+                        mashbill: "13년 이상 숙성 배럴 프루프 (한정판)",
+                        price: "35.0 ~ 45.0 만원",
+                        difficulty: "매우 어려움",
+                        typeBadge: "Ultra Premium",
+                        nose: "오래된 시가 박스, 블랙체리 잼, 다크 트러플",
+                        palate: "압도적인 오크 복합미, 벨벳 질감의 초콜릿, 자두",
+                        finish: "장엄하게 이어지는 깊은 오크와 토피 향조",
+                        recommendation: "고숙성 버번이 구현할 수 있는 최상위권의 복합미를 제공합니다."
+                    }
+                ]
+            },
+            {
+                page: 6,
+                level: "LEVEL 06",
+                pageTitle: "위티드의 정점과 상징적 싱글 배럴",
+                pageDesc: "버팔로 트레이스 위티드 매시빌과 세계 최초의 싱글 배럴을 비교 시음합니다.",
+                bottles: [
+                    {
+                        id: "b16",
+                        name: "메이커스 마크 Cask Strength (CS)",
+                        wbScore: "85.8",
+                        proof: "~110-114 Proof (55~57% ABV)",
+                        mashbill: "위티드 배럴 프루프 (비여과)",
+                        price: "10.5 ~ 12.5 만원",
+                        difficulty: "보통",
+                        typeBadge: "Wheated CS",
+                        nose: "복숭아, 메이플 시럽, 버터스카치",
+                        palate: "밀 특유의 부드러움, 과일 잼, 밀크초콜릿",
+                        finish: "온화하게 가라앉는 구운 곡물 피니시",
+                        recommendation: "일반 밀 버번의 질감 위에 고도수의 밀도감을 이상적으로 더했습니다."
+                    },
+                    {
+                        id: "b17",
+                        name: "웰러 앤티크 107 (Weller Antique 107)",
+                        wbScore: "87.4",
+                        proof: "107 Proof (53.5% ABV)",
+                        mashbill: "버팔로 트레이스 위티드 매시빌",
+                        price: "22.0 ~ 28.0 만원",
+                        difficulty: "어려움",
+                        typeBadge: "Wheated Cult",
+                        nose: "애플 파이, 화사한 플로럴, 바닐라 에센스",
+                        palate: "진한 사과잼, 꿀, 부드러운 가죽과 오크",
+                        finish: "입안 가득 퍼지는 과실미와 시나몬 잔향",
+                        recommendation: "파피 반 윙클과 동일한 매시빌로 제조되는 희소가치 높은 위티드 버번입니다."
+                    },
+                    {
+                        id: "b18",
+                        name: "블랑톤 오리지널 싱글 배럴 (Blanton's SiB)",
+                        wbScore: "86.0",
+                        proof: "93 Proof (46.5% ABV)",
+                        mashbill: "Mashbill #2 (하이 라이 12~15%)",
+                        price: "18.0 ~ 24.0 만원",
+                        difficulty: "어려움",
+                        typeBadge: "Historic SiB",
+                        nose: "감귤, 건살구, 크리미한 바닐라, 육두구",
+                        palate: "균형 잡힌 밸런스, 꿀에 절인 오렌지, 달콤한 옥수수",
+                        finish: "단정하고 우아한 건과일과 오크 잔향",
+                        recommendation: "1984년 탄생한 최초의 상업용 싱글 배럴로 정갈한 밸런스가 특징입니다."
+                    }
+                ]
+            },
+            {
+                page: 7,
+                level: "LEVEL 07",
+                pageTitle: "배럴 피니시와 혁신적 오크 가공",
+                pageDesc: "와인 캐스크 피니시 및 토스티드 배럴을 통해 확장된 스펙트럼을 분석합니다.",
+                bottles: [
+                    {
+                        id: "b19",
+                        name: "앤젤스 엔비 포트 캐스크 피니시",
+                        wbScore: "84.9",
+                        proof: "86.6 Proof (43.3% ABV)",
+                        mashbill: "루비 포트 와인 캐스크 6개월 추가 숙성",
+                        price: "10.0 ~ 12.0 만원",
+                        difficulty: "쉬움~보통",
+                        typeBadge: "Port Finish",
+                        nose: "말린 무화과, 라즈베리 잼, 바닐라",
+                        palate: "실키한 디저트 질감, 포트 와인의 붉은 과실미",
+                        finish: "은은한 와인 탄닌과 오크 단맛의 여운",
+                        recommendation: "와인 캐스크 피니시를 통해 버번에 디저트 와인의 화사함을 융합한 제품입니다."
+                    },
+                    {
+                        id: "b20",
+                        name: "조셉 매그너스 (Joseph Magnus)",
+                        wbScore: "87.2",
+                        proof: "100 Proof (50% ABV)",
+                        mashbill: "올로로소 + PX 셰리 + 코냑 캐스크 3중 피니시",
+                        price: "22.0 ~ 26.0 만원",
+                        difficulty: "어려움",
+                        typeBadge: "Triple Cask",
+                        nose: "녹진한 건포도, 코냑 청포도 향조, 초콜릿",
+                        palate: "농축된 프룬, 가죽, 오렌지 마멀레이드",
+                        finish: "셰리와 코냑의 풍미가 바닐라와 조화롭게 종료",
+                        recommendation: "셰리 싱글몰트 애호가에게도 높은 선호도를 보이는 복합 캐스크 피니시입니다."
+                    },
+                    {
+                        id: "b21",
+                        name: "미터스 US*1 토스티드 배럴 피니시",
+                        wbScore: "88.4",
+                        proof: "91.4 Proof (45.7% ABV)",
+                        mashbill: "약불로 토스팅된 배럴에서 2차 숙성",
+                        price: "32.0 ~ 45.0 만원",
+                        difficulty: "매우 어려움",
+                        typeBadge: "Toasted Barrel",
+                        nose: "캠프파이어 마시멜로, 바닐라 팟, 버터스카치",
+                        palate: "극상의 크리미함, 헤이즐넛 프랄린, 시나몬 롤",
+                        finish: "구운 오크의 고소함과 벨벳 같은 단맛",
+                        recommendation: "차링(Charring) 대신 토스팅(Toasting) 공법을 사용하여 부드러운 단향을 극대화했습니다."
+                    }
+                ]
+            },
+            {
+                page: 8,
+                level: "LEVEL 08",
+                pageTitle: "크래프트 명가 윌렛 & 싱글배럴 배럴프루프",
+                pageDesc: "원액 그대로의 극한 타격감과 독창적 허브 향조를 지닌 독립적 스타일을 만납니다.",
+                bottles: [
+                    {
+                        id: "b22",
+                        name: "잭 다니엘스 SBBP (Single Barrel Barrel Proof)",
+                        wbScore: "88.5",
+                        proof: "~128-134 Proof (64~67% ABV)",
+                        mashbill: "단일 배럴 원액 무여과 병입",
+                        price: "18.0 ~ 22.0 만원",
+                        difficulty: "보통~어려움",
+                        typeBadge: "Monster SiB",
+                        nose: "바나나 플람베, 카카오 99%, 진한 바닐라",
+                        palate: "65도 수준의 강한 파워, 구운 호두, 캐러멜 시럽",
+                        finish: "입안 가득 차오르는 오크와 스모키 여운",
+                        recommendation: "잭 다니엘의 한계를 뛰어넘어 배럴 프루프 매니아들의 절대적 지지를 받는 제품입니다."
+                    },
+                    {
+                        id: "b23",
+                        name: "윌렛 패밀리 에스테이트 4년 스몰배치 라이",
+                        wbScore: "87.8",
+                        proof: "~108-115 Proof (54~57% ABV)",
+                        mashbill: "윌렛 자체 생산 하이 라이",
+                        price: "15.0 ~ 18.0 만원",
+                        difficulty: "보통",
+                        typeBadge: "Craft Rye",
+                        nose: "생생한 딜(Dill), 민트, 파인애플, 백후추",
+                        palate: "싱그러운 허브, 생강편, 자몽, 아니스",
+                        finish: "상쾌한 박하사탕과 시트러스의 독창적 잔향",
+                        recommendation: "전통적 우디함 대신 독보적인 허브와 과실 뉘앙스로 호평을 받는 크래프트 라이입니다."
+                    },
+                    {
+                        id: "b24",
+                        name: "윌렛 패밀리 에스테이트 버번 SiB (Purple Foil)",
+                        wbScore: "90.2",
+                        proof: "배럴별 상이 (~120-130 Proof)",
+                        mashbill: "윌렛 단독 선별 희귀 배럴",
+                        price: "80.0 ~ 150.0 만원 이상",
+                        difficulty: "극상",
+                        typeBadge: "Purple Foil",
+                        nose: "앤틱 가구, 블랙베리 농축액, 가죽, 다크 모카",
+                        palate: "높은 점도, 프룬, 정향, 농축된 체리 콤포트",
+                        finish: "층층이 변주하는 스파이스와 다크 카카오",
+                        recommendation: "컬렉터 시장에서 독보적인 프리미엄을 형성하는 하이엔드 싱글 배럴입니다."
+                    }
+                ]
+            },
+            {
+                page: 9,
+                level: "LEVEL 09",
+                pageTitle: "리미티드 릴리즈 & 안티크 컬렉션 (BTAC)",
+                pageDesc: "버팔로 트레이스 안티크 컬렉션(BTAC)을 비롯한 세계 최정상급 연례 한정판입니다.",
+                bottles: [
+                    {
+                        id: "b25",
+                        name: "조지 티 스택 (George T. Stagg - BTAC)",
+                        wbScore: "92.4",
+                        proof: "~130-140 Proof (65~70% ABV)",
+                        mashbill: "15년 이상 무여과 배럴 프루프 (Mashbill #1)",
+                        price: "180.0 ~ 250.0 만원",
+                        difficulty: "극상",
+                        typeBadge: "BTAC",
+                        nose: "가죽 소파, 시가 래퍼, 에스프레소 빈, 다크 초콜릿",
+                        palate: "강력한 파워, 묵직한 오크 탄닌, 체리 시럽, 구운 헤이즐넛",
+                        finish: "가슴 깊은 곳에서 피어오르는 웅장한 오크 여운",
+                        recommendation: "15년 이상의 고숙성과 고도수가 결합된 상징적 마스터피스입니다."
+                    },
+                    {
+                        id: "b26",
+                        name: "포로지스 리미티드 에디션 스몰 배치 (LE)",
+                        wbScore: "91.8",
+                        proof: "~110-115 Proof",
+                        mashbill: "포로지스 10가지 레시피 중 3~4종 마스터 블렌딩",
+                        price: "60.0 ~ 90.0 만원",
+                        difficulty: "극상",
+                        typeBadge: "Master Blend",
+                        nose: "복숭아, 살구 잼, 장미 꽃잎, 바닐라 오크",
+                        palate: "섬세한 텍스처, 붉은 과실과 호밀 스파이스의 조화",
+                        finish: "우아하고 긴 꽃향과 과일의 잔향",
+                        recommendation: "매년 마스터 디스틸러가 엄선한 원액을 배합하는 블렌딩 미학의 정점입니다."
+                    },
+                    {
+                        id: "b27",
+                        name: "윌리엄 라루 웰러 (William Larue Weller - BTAC)",
+                        wbScore: "93.1",
+                        proof: "~125-135 Proof (62~67% ABV)",
+                        mashbill: "12년 이상 숙성 위티드 배럴 프루프",
+                        price: "220.0 ~ 300.0 만원",
+                        difficulty: "극상",
+                        typeBadge: "King of Wheated",
+                        nose: "크림 브륄레, 캐러멜 마키아토, 무화과 꿀 절임",
+                        palate: "밀도 높은 점도, 부드러운 단맛과 배럴 프루프의 강렬함",
+                        finish: "완벽하게 수렴되는 최고급 오크와 버터스카치",
+                        recommendation: "현존하는 모든 위티드 버번 중 최고 수준의 평점을 기록하는 보틀입니다."
+                    }
+                ]
+            },
+            {
+                page: 10,
+                level: "LEVEL 10",
+                pageTitle: "증류소 현지 핸즈필 & 익스클루시브",
+                pageDesc: "켄터키 증류소 방문자만이 배럴에서 직접 병입하는 로컬 익스클루시브 영역입니다.",
+                bottles: [
+                    {
+                        id: "b28",
+                        name: "헤븐힐 바즈타운 핸즈필 배럴 프루프",
+                        wbScore: "90.5",
+                        proof: "Barrel Proof (~125-138 Proof)",
+                        mashbill: "방문자 선별 (Elijah Craig / Larceny / Bernheim)",
+                        price: "$100 ~ $150",
+                        difficulty: "극상",
+                        typeBadge: "Distillery Hand-Fill",
+                        nose: "숙성고의 나무 먼지, 짙은 흑당, 순수한 오크 수액",
+                        palate: "가공되지 않은 원초적 유질감, 체리, 카카오",
+                        finish: "무여과 배럴 숯 가루와 강한 탄닌의 여운",
+                        recommendation: "현지 연구실에서 배럴을 시음 후 본인이 직접 병입하는 오리지널 경험입니다."
+                    },
+                    {
+                        id: "b29",
+                        name: "메이커스 마크 프라이빗 셀렉션 핸즈-딥",
+                        wbScore: "88.8",
+                        proof: "108-112 Proof (캐스크 강도)",
+                        mashbill: "10개의 커스텀 오크 스테이브 조합 숙성",
+                        price: "$85 ~ $115",
+                        difficulty: "극상",
+                        typeBadge: "Custom Stave",
+                        nose: "로스팅된 프렌치 오크, 다크 초콜릿, 원두 향조",
+                        palate: "스테이브 조합에 따른 독창적 레이어, 우디한 텍스처",
+                        finish: "단맛과 정제된 향신료의 균형 있는 마무리",
+                        recommendation: "커스텀 조합 오크통 원액을 직접 레드 왁스에 딥핑(Dipping)하여 완성합니다."
+                    },
+                    {
+                        id: "b30",
+                        name: "버팔로 트레이스 기프트 샵 익스클루시브 SiB",
+                        wbScore: "89.5",
+                        proof: "90 - 100+ Proof",
+                        mashbill: "증류소 단독 선별 배럴",
+                        price: "$60 ~ $150",
+                        difficulty: "극상",
+                        typeBadge: "Distillery Only",
+                        nose: "단일 배럴 특유의 순수한 바닐라, 사과, 메이플",
+                        palate: "대량 배합에서 찾기 힘든 특유의 질감과 과실미",
+                        finish: "정돈된 시나몬과 가죽 향조",
+                        recommendation: "증류소 기프트 샵 현장에서만 한정 배정되는 기념비적 싱글 배럴입니다."
+                    }
+                ]
+            },
+            {
+                page: 11,
+                level: "LEVEL 11",
+                pageTitle: "전설의 영역: 올드 더스티 & 파피 반 윙클",
+                pageDesc: "수십 년 전 병입된 빈티지 더스티(Dusty) 버번과 위스키 역사의 전설들을 다룹니다.",
+                bottles: [
+                    {
+                        id: "b31",
+                        name: "파피 반 윙클 패밀리 리저브 15년",
+                        wbScore: "92.8",
+                        proof: "107 Proof (53.5% ABV)",
+                        mashbill: "전설적 위티드 레시피 15년 숙성",
+                        price: "350.0 ~ 480.0 만원",
+                        difficulty: "전설",
+                        typeBadge: "Pappy 15yo",
+                        nose: "농익은 사과 콤포트, 오래된 오크 서랍, 꿀, 무화과",
+                        palate: "107프루프의 완벽한 밸런스, 비단결 질감, 다크 체리",
+                        finish: "잡미 없이 완벽하게 수렴되는 고결한 탄닌",
+                        recommendation: "버번 열풍의 중심에 있는 보틀로, 숙성도와 알코올의 완벽한 조화로 칭송받습니다."
+                    },
+                    {
+                        id: "b32",
+                        name: "스티첼-웰러 올드 핏츠제럴드 1960-70년대",
+                        wbScore: "93.7",
+                        proof: "100 Proof (BiB)",
+                        mashbill: "스티첼-웰러 오리지널 효모 배합",
+                        price: "$3,000 ~ $6,000+",
+                        difficulty: "전설",
+                        typeBadge: "Vintage Dusty",
+                        nose: "버터스카치, 고풍스러운 밀랍(Beeswax), 마호가니",
+                        palate: "두터운 오일 질감, 캐러멜 푸딩, 구운 밤, 시나몬",
+                        finish: "수십 년 병 숙성이 완성한 둥글고 장엄한 피니시",
+                        recommendation: "폐쇄된 전설적 증류소의 유산으로, 세월이 빚어낸 진귀한 풍미를 간직하고 있습니다."
+                    },
+                    {
+                        id: "b33",
+                        name: "A.H. 허쉬 리저브 16년 1974 빈티지",
+                        wbScore: "94.2",
+                        proof: "91.6 Proof (45.8% ABV)",
+                        mashbill: "펜실베이니아 셰퍼스타운 팟 스틸 증류",
+                        price: "1,000만원 이상",
+                        difficulty: "박물관급",
+                        typeBadge: "Immortal Myth",
+                        nose: "열대과일, 망고, 말린 살구, 가죽, 바닐라 오크",
+                        palate: "경지를 넘어선 복합미, 과일 타르트, 세련된 민트",
+                        finish: "시음 후 10분 이상 이어지는 플로럴과 우드",
+                        recommendation: "단독 서적으로도 출간된 역사상 최고 평점의 전설적 버번 여정 종착점입니다."
+                    }
+                ]
+            }
+        ];
+
+        let currentPage = 1;
+        const totalPages = bourbonRoadmap.length;
+        let tastedBottles = JSON.parse(sessionStorage.getItem('tasted_bourbons') || '[]');
+
+        function renderNavPills() {
+            const nav = document.getElementById('page-nav-list');
+            nav.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                const isActive = i === currentPage;
+                btn.className = `px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition whitespace-nowrap ${
+                    isActive 
+                        ? 'bg-amber-500 text-slate-950 font-bold shadow-sm' 
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                }`;
+                btn.innerText = `P.${i < 10 ? '0' + i : i}`;
+                btn.onclick = () => goToPage(i);
+                nav.appendChild(btn);
+            }
+        }
+
+        function renderCurrentPage() {
+            const pageData = bourbonRoadmap[currentPage - 1];
+            const container = document.getElementById('page-display-container');
+            document.getElementById('current-page-indicator').innerText = `PAGE ${currentPage < 10 ? '0' + currentPage : currentPage} / ${totalPages}`;
+
+            let html = `
+                <!-- Stage Header Banner -->
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-amber-500">
+                    <div class="flex items-center justify-between gap-4 flex-wrap mb-2">
+                        <span class="text-amber-400 text-xs font-mono font-bold tracking-wider">${pageData.level}</span>
+                        <span class="text-xs text-slate-400 font-mono">SELECTION ${currentPage * 3 - 2} - ${currentPage * 3}</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white mb-2">${pageData.pageTitle}</h2>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">${pageData.pageDesc}</p>
+                </div>
+
+                <!-- Bottle Cards List -->
+                <div class="space-y-5">
+            `;
+
+            pageData.bottles.forEach((b, idx) => {
+                const isChecked = tastedBottles.includes(b.id);
+                html += `
+                    <div class="glass-panel glass-card-interactive p-6 rounded-2xl relative" id="card-${b.id}">
+                        <!-- Top Metadata Row -->
+                        <div class="flex items-center justify-between gap-4 flex-wrap pb-4 border-b border-slate-800/80 mb-5">
+                            <div class="flex items-center gap-3">
+                                <label class="cursor-pointer flex items-center gap-2 group select-none">
+                                    <input type="checkbox" onchange="toggleTasted('${b.id}')" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-900 focus:ring-0 focus:ring-offset-0 cursor-pointer">
+                                    <span class="text-xs font-medium ${isChecked ? 'text-amber-400' : 'text-slate-400 group-hover:text-slate-200'}">${isChecked ? '시음 완료' : '미시음'}</span>
+                                </label>
+                                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800/60 text-slate-300 border border-slate-700/60">No.${((currentPage - 1) * 3) + idx + 1}</span>
+                            </div>
+
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-800/40 text-slate-400 border border-slate-700/40">${b.typeBadge}</span>
+                                <div class="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-star text-amber-400 text-[10px]"></i>
+                                    <span class="text-xs font-bold font-mono text-amber-400">${b.wbScore}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottle Title -->
+                        <div class="mb-4">
+                            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white mb-3 ${isChecked ? 'line-through opacity-50' : ''}">${b.name}</h3>
+                            
+                            <!-- Key Metrics Grid -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="text-[10px] text-slate-500 block mb-0.5">Proof / ABV</span>
+                                    <span class="font-mono font-semibold text-slate-200">${b.proof}</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="text-[10px] text-slate-500 block mb-0.5">Mashbill</span>
+                                    <span class="font-medium text-slate-300 truncate block">${b.mashbill}</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="text-[10px] text-slate-500 block mb-0.5">Est. Price</span>
+                                    <span class="font-medium text-slate-200">${b.price}</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="text-[10px] text-slate-500 block mb-0.5">Availability</span>
+                                    <span class="font-medium ${b.difficulty.includes('극상') || b.difficulty.includes('전설') ? 'text-rose-400' : 'text-slate-300'}">${b.difficulty}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasting Note Rows -->
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs space-y-2 mb-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 w-12 text-center flex-shrink-0">NOSE</span>
+                                <span class="text-slate-300 leading-relaxed">${b.nose}</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 w-12 text-center flex-shrink-0">PALATE</span>
+                                <span class="text-slate-300 leading-relaxed">${b.palate}</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 w-12 text-center flex-shrink-0">FINISH</span>
+                                <span class="text-slate-300 leading-relaxed">${b.finish}</span>
+                            </div>
+                        </div>
+
+                        <!-- Recommendation Note -->
+                        <div class="p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs text-slate-300 flex items-start gap-2.5">
+                            <i class="fa-solid fa-lightbulb text-amber-400 text-xs mt-0.5 flex-shrink-0"></i>
+                            <div class="leading-relaxed">
+                                <span class="font-semibold text-amber-400">Tasting Tip:</span> ${b.recommendation}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+            renderNavPills();
+            updateProgress();
+        }
+
+        function toggleTasted(id) {
+            if (tastedBottles.includes(id)) {
+                tastedBottles = tastedBottles.filter(item => item !== id);
+            } else {
+                tastedBottles.push(id);
+            }
+            sessionStorage.setItem('tasted_bourbons', JSON.stringify(tastedBottles));
+            renderCurrentPage();
+        }
+
+        function updateProgress() {
+            const total = 33;
+            const count = tastedBottles.length;
+            const pct = Math.round((count / total) * 100);
+            document.getElementById('tasting-stat').innerText = `${count} / ${total} (${pct}%)`;
+            document.getElementById('progress-fill').style.width = `${pct}%`;
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderCurrentPage();
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderCurrentPage();
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+        }
+
+        function goToPage(pageNum) {
+            currentPage = pageNum;
+            renderCurrentPage();
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        function printAllPages() {
+            const container = document.getElementById('page-display-container');
+            let fullHtml = '';
+
+            bourbonRoadmap.forEach((pageData, pIdx) => {
+                fullHtml += `
+                    <div class="page-section mb-8" style="page-break-after: always;">
+                        <div class="p-4 border-b border-slate-300 mb-4">
+                            <span class="text-xs font-mono font-bold">${pageData.level} (PAGE ${pIdx + 1})</span>
+                            <h2 class="text-xl font-bold font-serif-title">${pageData.pageTitle}</h2>
+                            <p class="text-xs text-slate-600 mt-1">${pageData.pageDesc}</p>
+                        </div>
+                `;
+
+                pageData.bottles.forEach((b, bIdx) => {
+                    fullHtml += `
+                        <div class="glass-panel p-4 rounded-xl border border-slate-300 mb-3" style="background: white !important; color: black !important;">
+                            <div class="flex justify-between items-center mb-1.5">
+                                <h3 class="text-sm font-bold">[No.${pIdx * 3 + bIdx + 1}] ${b.name}</h3>
+                                <span class="text-xs font-mono font-bold text-amber-700">WB ${b.wbScore} | ${b.proof}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600 mb-1"><b>특징:</b> ${b.mashbill} | <b>난이도:</b> ${b.difficulty} | <b>가격:</b> ${b.price}</p>
+                            <p class="text-[11px] mb-0.5"><b>Nose:</b> ${b.nose}</p>
+                            <p class="text-[11px] mb-0.5"><b>Palate:</b> ${b.palate}</p>
+                            <p class="text-[11px] mb-0.5"><b>Finish:</b> ${b.finish}</p>
+                            <p class="text-[11px] text-slate-700 mt-1"><b>Tip:</b> ${b.recommendation}</p>
+                        </div>
+                    `;
+                });
+
+                fullHtml += `</div>`;
+            });
+
+            const originalContent = container.innerHTML;
+            container.innerHTML = fullHtml;
+            window.print();
+            container.innerHTML = originalContent;
+            renderCurrentPage();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCurrentPage();
+        });
+    </script>
+</body>
+</html>
